@@ -10,5 +10,8 @@ namespace WebAPI_EFHospital.Model
         public int Id { get; set; }
 
         public int Number { get; set; }
+
+        public int WindowId { get; set; }
+        public Window Window { get; set; }
     }
 }
