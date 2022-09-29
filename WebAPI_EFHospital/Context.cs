@@ -21,8 +21,8 @@ namespace WebAPI_EFHospital
 
         public Context()
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -35,9 +35,6 @@ namespace WebAPI_EFHospital
             modelBuilder.Entity<Person>().ToTable("People");
             modelBuilder.Entity<Employee>().ToTable("Employees");
             modelBuilder.Entity<Client>().ToTable("Clients");
-
-
-            modelBuilder.Entity<Appointment>().HasOne(a => a.Registration).WithOne(r => r.Appointment).HasForeignKey<Registration>(r=>r.AppointmentId);
         }
     }
 }
