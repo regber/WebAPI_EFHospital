@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI_EFHospital
 {
@@ -20,6 +21,19 @@ namespace WebAPI_EFHospital
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            using (Context db = new Context())
+            {
+                if(db.People.Count() == 0)
+                {
+                    InitDBFill(db);
+                }
+            }
+        }
+
+        private void InitDBFill(Context db)
+        {
+
         }
 
         public IConfiguration Configuration { get; }
