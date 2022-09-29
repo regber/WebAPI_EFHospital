@@ -37,8 +37,7 @@ namespace WebAPI_EFHospital
             modelBuilder.Entity<Client>().ToTable("Clients");
 
 
-            modelBuilder.Entity<Appointment>().HasOne(w => w.Registration).WithOne(r => r.Appointment).HasForeignKey<Registration>(r=>r.AppointmentId);
-            modelBuilder.Entity<Appointment>().HasOne(w => w.Office).WithOne(o => o.Appointment).HasForeignKey<Office>(o => o.AppointmentId);
+            modelBuilder.Entity<Appointment>().HasOne(a => a.Registration).WithOne(r => r.Appointment).HasForeignKey<Registration>(r=>r.AppointmentId);
         }
     }
 }
