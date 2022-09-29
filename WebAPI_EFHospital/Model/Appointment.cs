@@ -12,7 +12,7 @@ namespace WebAPI_EFHospital.Model
         public int EmplScheduleId { get; set; }
         public EmplSchedule EmplSchedule { get; set; }
 
-        public int? RegistrationId { get; set; }
+        //public int? RegistrationId { get; set; }
         public Registration? Registration { get; set; }
 
         public int OfficeId { get; set; }
