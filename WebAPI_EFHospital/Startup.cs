@@ -184,8 +184,6 @@ namespace WebAPI_EFHospital
             Client client16 = new Client { Age = 60, LastName = "Трусова", FirstName = "Елена", MiddleName = "Ивановна" };
 
 
-            
-
             db.Clients.AddRange(new Client[] { client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16 });
             db.Employees.AddRange(new Employee[] {therapistEmpl1,therapistEmpl2, entEmpl , cardiologistEmpl, endocrinologistEmpl, traumatologistEmpl, surgeonEmpl });
 
@@ -236,6 +234,9 @@ namespace WebAPI_EFHospital
             });
 
             services.AddDbContext<Context>();
+
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+                                                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
         }
 
