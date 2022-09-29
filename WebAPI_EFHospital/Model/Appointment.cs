@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI_EFHospital.Model
 {
-    public class Window
+    public class Appointment
     {
         public int Id { get; set; }
 

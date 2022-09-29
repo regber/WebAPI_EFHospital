@@ -14,7 +14,7 @@ namespace WebAPI_EFHospital
         public DbSet<Client> Clients { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<EmplSchedule> EmplSchedules { get; set; }
-        public DbSet<Window> Windows { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Registration> Registrations { get; set; }
         public DbSet<Office> Offices { get; set; }
 
@@ -37,8 +37,8 @@ namespace WebAPI_EFHospital
             modelBuilder.Entity<Client>().ToTable("Clients");
 
 
-            modelBuilder.Entity<Window>().HasOne(w => w.Registration).WithOne(r => r.Window).HasForeignKey<Registration>(r=>r.WindowId);
-            modelBuilder.Entity<Window>().HasOne(w => w.Office).WithOne(o => o.Window).HasForeignKey<Office>(o => o.WindowId);
+            modelBuilder.Entity<Appointment>().HasOne(w => w.Registration).WithOne(r => r.Appointment).HasForeignKey<Registration>(r=>r.AppointmentId);
+            modelBuilder.Entity<Appointment>().HasOne(w => w.Office).WithOne(o => o.Appointment).HasForeignKey<Office>(o => o.AppointmentId);
         }
     }
 }

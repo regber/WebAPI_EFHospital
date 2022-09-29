@@ -11,7 +11,7 @@ namespace WebAPI_EFHospital.Model
 
         public int Number { get; set; }
 
-        public int WindowId { get; set; }
-        public Window Window { get; set; }
+        public int? AppointmentId { get; set; }
+        public Appointment? Appointment { get; set; }
     }
 }

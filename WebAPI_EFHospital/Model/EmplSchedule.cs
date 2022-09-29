@@ -9,6 +9,6 @@ namespace WebAPI_EFHospital.Model
     {
         public int Id { get; set; }
 
-        public ICollection<Window> Windows { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }
