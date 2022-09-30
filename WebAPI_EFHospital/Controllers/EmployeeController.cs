@@ -13,14 +13,10 @@ namespace WebAPI_EFHospital.Controllers
     public class EmployeeController : ControllerBase
     {
 
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// Получить список сотрудников
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetEmployees")]
         public JsonResult GetEmployees()
         {
@@ -32,6 +28,11 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить информацию по сотруднику
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <returns></returns>
         [HttpGet("GetEmployee")]
         public JsonResult GetEmployee(int employeeId)
         {
@@ -43,6 +44,11 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить список свободных для приема записей
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <returns></returns>
         [HttpGet("GetEmployeeFreeAppointment")]
         public JsonResult GetEmployeeFreeAppointments(int employeeId)
         {
@@ -63,6 +69,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Получить список занятых для приема записей
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
         [HttpGet("GetEmployeeOccupiedAppointment")]
         public JsonResult GetEmployeeOccupiedAppointments(int employeeId)
         {
@@ -84,7 +96,16 @@ namespace WebAPI_EFHospital.Controllers
         }
 
 
-
+        /// <summary>
+        /// Добавить сотрудника
+        /// </summary>
+        /// <param name="age">Возраст</param>
+        /// <param name="firstName">Имя</param>
+        /// <param name="lastName">Фамилия</param>
+        /// <param name="middleName">Отчество</param>
+        /// <param name="positionId">Id должности</param>
+        /// <param name="emplScheduleId">Id расписания сотрудника</param>
+        /// <returns></returns>
         [HttpPost("AddEmployee")]
         public bool AddEmployee(int age, string firstName, string lastName, string middleName, int? positionId, int? emplScheduleId)
         {
@@ -106,6 +127,11 @@ namespace WebAPI_EFHospital.Controllers
 
         }
 
+        /// <summary>
+        /// Удалить сотрудника из БД
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <returns></returns>
         [HttpDelete("DeleteEmployee")]
         public bool DeleteEmployee(int employeeId)
         {
@@ -133,6 +159,17 @@ namespace WebAPI_EFHospital.Controllers
 
         }
 
+        /// <summary>
+        /// Изменить данные сотрудника
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="firstName">Имя</param>
+        /// <param name="lastName">Фамилия</param>
+        /// <param name="middleName">Отчество</param>
+        /// <param name="positionId">Id должности</param>
+        /// <param name="emplScheduleId">Id расписания сотрудника</param>
+        /// <returns></returns>
         [HttpPut("EditEmployee")]
         public bool EditEmployee(int employeeId,int age, string firstName, string lastName, string middleName, int? positionId, int? emplScheduleId)
         {
@@ -163,7 +200,10 @@ namespace WebAPI_EFHospital.Controllers
 
 
 
-
+        /// <summary>
+        /// Получить список должностей
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetPositions")]
         public JsonResult GetPositions()
         {
@@ -174,6 +214,12 @@ namespace WebAPI_EFHospital.Controllers
                 return new JsonResult(positions);
             }
         }
+
+        /// <summary>
+        /// Получить информацию по должности
+        /// </summary>
+        /// <param name="positionId">Id должности</param>
+        /// <returns></returns>
         [HttpGet("GetPosition")]
         public JsonResult GetPosition(int positionId)
         {
@@ -185,6 +231,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Добавить должность в ябд
+        /// </summary>
+        /// <param name="positionName">Название должности</param>
+        /// <param name="salary">Зарплата</param>
+        /// <returns></returns>
         [HttpPost("AddPosition")]
         public bool AddPosition(string positionName, int salary)
         {
@@ -208,6 +260,11 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Удалить должность из БД
+        /// </summary>
+        /// <param name="positionId">Id должности</param>
+        /// <returns></returns>
         [HttpDelete("DeletePosition")]
         public bool DeletePosition(int positionId)
         {
@@ -231,8 +288,15 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Изменить должность
+        /// </summary>
+        /// <param name="positionId">Id должности</param>
+        /// <param name="positionName">Название должности</param>
+        /// <param name="salary">Зарплата</param>
+        /// <returns></returns>
         [HttpPut("EditPosition")]
-        public bool EditPosition(int positionId, string name, int salary)
+        public bool EditPosition(int positionId, string positionName, int salary)
         {
             try
             {
@@ -255,6 +319,13 @@ namespace WebAPI_EFHospital.Controllers
 
         }
 
+
+        /// <summary>
+        /// Назначить сотрудника на должность
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <param name="positionId">Id должности</param>
+        /// <returns></returns>
         [HttpPut("SetEmployeePosition")]
         public bool SetEmployeePosition(int employeeId, int positionId)
         {
@@ -284,7 +355,10 @@ namespace WebAPI_EFHospital.Controllers
         }
 
 
-
+        /// <summary>
+        /// Получить список расписаний сотрудников
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetSchedules")]
         public JsonResult GetSchedules()
         {
@@ -296,6 +370,11 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить информацию по расписанию сотрудника
+        /// </summary>
+        /// <param name="scheduleId"></param>
+        /// <returns></returns>
         [HttpGet("GetSchedule")]
         public JsonResult GetSchedule(int scheduleId)
         {
@@ -307,6 +386,11 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Добавить расписание сотрудника
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("AddSchedule")]
         public int? AddSchedule()
         {
@@ -330,6 +414,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Удалить расписание сотрудника
+        /// </summary>
+        /// <param name="scheduleId">Id расписания</param>
+        /// <returns></returns>
         [HttpDelete("DeleteSchedule")]
         public bool DeleteSchedule(int scheduleId)
         {
@@ -353,6 +443,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Назначить раписание сотруднику
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <param name="scheduleId">id расписания</param>
+        /// <returns></returns>
         [HttpPut("SetEmployeeSchedule")]
         public bool SetEmployeeSchedule(int employeeId, int scheduleId)
         {
@@ -384,7 +480,10 @@ namespace WebAPI_EFHospital.Controllers
 
 
 
-
+        /// <summary>
+        /// Получить список кабинетов
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetOffices")]
         public JsonResult GetOffices()
         {
@@ -396,6 +495,11 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить информацию по кабинету
+        /// </summary>
+        /// <param name="officeId">Id кабинета</param>
+        /// <returns></returns>
         [HttpGet("GetOffice")]
         public JsonResult GetOffice(int officeId)
         {
@@ -407,6 +511,11 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Добавить кабинет
+        /// </summary>
+        /// <param name="officeNumber">Номер кабинета</param>
+        /// <returns></returns>
         [HttpPost("AddOffice")]
         public bool AddOffice(int officeNumber)
         {
@@ -430,6 +539,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Удалить кабинет из БД
+        /// </summary>
+        /// <param name="officeId">Id кабинета</param>
+        /// <returns></returns>
         [HttpDelete("DeleteOffice")]
         public bool DeleteOffice(int officeId)
         {
@@ -450,6 +565,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Изменить данные кабинета
+        /// </summary>
+        /// <param name="officeId">Id кабинета</param>
+        /// <param name="officeNumber">Номер кабинета</param>
+        /// <returns></returns>
         [HttpPut("EditOffice")]
         public bool EditOffice(int officeId, int officeNumber)
         {
@@ -474,7 +595,10 @@ namespace WebAPI_EFHospital.Controllers
 
 
 
-
+        /// <summary>
+        /// Получить список приемов
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetFreeAppointments")]
         public JsonResult GetFreeAppointments()
         {
@@ -486,6 +610,10 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить список записей на прием
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetOccupiedAppointments")]
         public JsonResult GetOccupiedAppointments()
         {
@@ -498,6 +626,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Получить информацию по приему
+        /// </summary>
+        /// <param name="appointmentId"></param>
+        /// <returns></returns>
         [HttpGet("GetAppointment")]
         public JsonResult GetAppointment(int appointmentId)
         {
@@ -510,6 +644,14 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Добавить прием в расписание
+        /// </summary>
+        /// <param name="scheduleId">Id расписания</param>
+        /// <param name="officeId">Id кабинета</param>
+        /// <param name="startReception">Время начала приема</param>
+        /// <param name="endReception">Время окончания приема</param>
+        /// <returns></returns>
         [HttpPost("AddAppointmentToSchedule")]
         public bool AddAppointmentToSchedule(int scheduleId, int officeId, string startReception, string endReception)
         {
@@ -533,6 +675,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Удалить прием из БД
+        /// </summary>
+        /// <param name="appointmentId">Id приема</param>
+        /// <returns></returns>
         [HttpDelete("RemoveAppointment")]
         public bool RemoveAppointment(int appointmentId)
         {
@@ -556,6 +704,14 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Изменить прием
+        /// </summary>
+        /// <param name="appointmentId">Id приема</param>
+        /// <param name="officeId">Id кабинета</param>
+        /// <param name="startReception">Время начала приема</param>
+        /// <param name="endReception">Время окончания приема</param>
+        /// <returns></returns>
         [HttpPut("EditAppointment")]
         public bool EditAppointment(int appointmentId, int officeId, string startReception, string endReception)
         {
