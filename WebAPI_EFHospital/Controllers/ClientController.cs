@@ -10,6 +10,11 @@ namespace WebAPI_EFHospital.Controllers
 {
     public class ClientController : ControllerBase
     {
+
+        /// <summary>
+        /// Получить список клиентов
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetClients")]
         public JsonResult GetClients()
         {
@@ -21,6 +26,11 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить информацию клиента по его Id
+        /// </summary>
+        /// <param name="clientId">Id клиента</param>
+        /// <returns></returns>
         [HttpGet("GetClient")]
         public JsonResult GetClient(int clientId)
         {
@@ -32,6 +42,15 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Добавить клиента в БД
+        /// </summary>
+        /// <param name="age">Возраст</param>
+        /// <param name="firstName">Имя</param>
+        /// <param name="lastName">Фамилия</param>
+        /// <param name="middleName">Отчество</param>
+        /// <returns></returns>
         [HttpPost("AddClient")]
         public bool AddClient(int age, string firstName, string lastName, string middleName)
         {
@@ -54,6 +73,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Удалить клиента из БД по его Id
+        /// </summary>
+        /// <param name="clientId">Id клиента</param>
+        /// <returns></returns>
         [HttpDelete("DeleteClient")]
         public bool DeleteClient(int clientId)
         {
@@ -76,6 +101,15 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+        /// <summary>
+        /// Изменить данные клиента
+        /// </summary>
+        /// <param name="clientId">Id клиента</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="firstName">Имя</param>
+        /// <param name="lastName">Фамилия</param>
+        /// <param name="middleName">Отчество</param>
+        /// <returns></returns>
         [HttpPut("EditClient")]
         public bool EditClient(int clientId, int age, string firstName, string lastName, string middleName)
         {
@@ -103,7 +137,10 @@ namespace WebAPI_EFHospital.Controllers
 
 
 
-
+        /// <summary>
+        /// Получить список записей на прием
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetRegistrations")]
         public JsonResult GetRegistrations()
         {
@@ -115,6 +152,12 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Получить записи на прием клиента по его Id
+        /// </summary>
+        /// <param name="clientId">Id клиента</param>
+        /// <returns></returns>
         [HttpGet("GetClientRegistrations")]
         public JsonResult GetClientRegistrations(int clientId)
         {
@@ -126,6 +169,13 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Добавить запись клиента на прием
+        /// </summary>
+        /// <param name="clientId">Id клиента</param>
+        /// <param name="appointmentId">Id приема</param>
+        /// <returns></returns>
         [HttpPost("AddClientRegistration")]
         public bool GetClientRegistrations(int clientId, int appointmentId)
         {
@@ -150,6 +200,12 @@ namespace WebAPI_EFHospital.Controllers
 
         }
 
+
+        /// <summary>
+        /// Удалить запись на прием
+        /// </summary>
+        /// <param name="registrationId">Id записи на прием</param>
+        /// <returns></returns>
         [HttpDelete("DeleteRegistration")]
         public bool DeleteRegistration(int registrationId)
         {
@@ -172,6 +228,14 @@ namespace WebAPI_EFHospital.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Изменить запись на прием
+        /// </summary>
+        /// <param name="registrationId">Id записи на прием</param>
+        /// <param name="clientId">Id клиента</param>
+        /// <param name="appointmentId">Id приема</param>
+        /// <returns></returns>
         [HttpPut("EditRegistration")]
         public bool EditRegistration(int registrationId, int clientId, int appointmentId)
         {
